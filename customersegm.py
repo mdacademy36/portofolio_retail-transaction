@@ -2,13 +2,23 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-
+import os
 
 # =====================================================
 # LOAD DATA
 @st.cache_data
 def load_data():
-    df = pd.read_parquet("Retail_Transactions_.parquet")
+    # Mengambil lokasi absolut dari folder tempat skrip ini berada
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_dir, "Retail_Transactions_.parquet")
+    
+    # Debugging: Jika file tetap tidak ada, kita tampilkan daftar file yang ada
+    if not os.path.exists(file_path):
+        st.error(f"File tidak ditemukan! Jalur yang dicari: {file_path}")
+        st.write("Daftar file di folder ini:", os.listdir(current_dir))
+        return None
+
+    df = pd.read_parquet(file_path)
     df["Date"] = pd.to_datetime(df["Date"])
     return df
 
