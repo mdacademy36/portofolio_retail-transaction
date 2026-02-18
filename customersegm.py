@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 # LOAD DATA
 @st.cache_data
 def load_data():
-    df = pd.read_csv("Retail_Transactions_.csv")
+    df = pd.read_parquet("Retail_Transactions_.parquet")
     df["Date"] = pd.to_datetime(df["Date"])
     return df
 
