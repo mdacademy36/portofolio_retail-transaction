@@ -1,33 +1,97 @@
 import streamlit as st
 
-st.set_page_config(page_title='Portofolio Maulana', layout= 'wide', page_icon=':rocket:')
+st.set_page_config(
+    page_title="Customer Segmentation | Maulana",
+    layout="wide",
+    page_icon="📊"
+)
 
-st.title('My Portfolio')
-st.header('Data Analyst Final Project Customer Segmentation In Retail Transaction')
 
-# Tambahkan judul dengan latar belakang hitam dan teks putih
-st.sidebar.markdown("""
-    <div style="background-color: #8D8741; border-radius: 8px; padding: 10px; text-align: center;">
-        <h3 style="color: #FBEEC1; margin: 0;">My Page</h3>
-    </div>
+# Styling aplikasi
+st.markdown("""
+<style>
+    /* Main title */
+    .main-title {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        color: #64748B;
+        font-size: 16px;
+        margin-bottom: 22px;
+    }
+
+    /* Sidebar background */
+    section[data-testid="stSidebar"] {
+        background-color: #164E4A;
+    }
+
+    section[data-testid="stSidebar"] * {
+        color: #FFFFFF;
+    }
+
+    /* Sidebar radio selection */
+    section[data-testid="stSidebar"] label {
+        color: #FFFFFF !important;
+    }
+
+    /* Sidebar logo card */
+    .sidebar-brand {
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        padding: 16px 10px;
+        text-align: center;
+        margin-bottom: 22px;
+    }
+
+    .sidebar-brand h3 {
+        color: #164E4A !important;
+        margin: 0;
+        font-size: 22px;
+    }
+
+    .sidebar-brand p {
+        color: #64748B !important;
+        font-size: 11px;
+        margin: 5px 0 0 0;
+    }
+</style>
 """, unsafe_allow_html=True)
 
-# Radio button
-page = st.sidebar.radio('**Choose what you want to know**', ['About Me','Projects','Customer Segmentation', 'Contacts'])
+# Sidebar
+st.sidebar.markdown("""
+<div class="sidebar-brand">
+    <h3>MDacademy36</h3>
+    <p>DATA ANALYTICS PORTFOLIO</p>
+</div>
+""", unsafe_allow_html=True)
 
 
-if page == 'Contacts':
-    import contact
-    contact.tampilkan_kontak()
+page = st.sidebar.radio(
+    "Choose what you want to know",
+    [
+        "About Me",
+        "Projects",
+        "Customer Segmentation",
+        "Contacts"
+    ]
+)
 
-if page == 'About Me':
+# Navigasi halaman
+if page == "About Me":
     import about
     about.tampilkan_tentang()
 
-if page == 'Projects':
+elif page == "Projects":
     import project
-    project.tampilkan_dashboard()    
+    project.tampilkan_dashboard()
 
-if page == 'Customer Segmentation':
+elif page == "Customer Segmentation":
     import customersegm
     customersegm.tampilkan_segmentasi()
+
+elif page == "Contacts":
+    import contact
+    contact.tampilkan_kontak()
