@@ -9,7 +9,10 @@ import os
 @st.cache_data
 def load_data():
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(current_dir, "Retail_Transactions_Cleaned.csv")
+    file_path = os.path.join(
+    current_dir,
+    "Retail_Transactions_Cleaned.parquet"
+)
 
     print("LOKASI DATASET:", file_path)
 
@@ -19,9 +22,9 @@ def load_data():
         return None
 
     try:
-        df = pd.read_csv(file_path)
+        df = pd.read_parquet(file_path)
 
-        print("JUMLAH BARIS CSV:", len(df))
+        print("JUMLAH BARIS DATASET:", len(df))
 
         df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
         df = df.dropna(subset=["Date"])
