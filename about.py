@@ -96,13 +96,8 @@ def tampilkan_tentang():
             business decisions.
             """
         )
-
         st.markdown(
-            "[View Dataset](https://drive.google.com/file/d/10cNDAdEzH8be6ZY_upS3YVmU7TUCuS-y/view?usp=sharing)"
-        )
-
-        st.markdown(
-            "[View Project Presentation](https://drive.google.com/file/d/11BuJWpz3vulD8bHkXxuqm_1lQWfaygvF/view?usp=sharing)"
+            "[View Project Presentation](https://drive.google.com/file/d/1-x_uO6LhGUsmZdbOVBP5_v-aRNwtlrCO/view?usp=sharing)"
         )
 
     with col2:
